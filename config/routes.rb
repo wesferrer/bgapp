@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "users#index"
+  root "games#index"
   resources :users, only: [:new, :create]
   resources :games
 

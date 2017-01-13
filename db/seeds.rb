@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+games = Game.create([
+  { name: 'Mansions of Madness Second Edition', year: 2016, designer: "Nikki Valens", publisher: "Fantasy Flight Games", max_players: 5}
+  ])
