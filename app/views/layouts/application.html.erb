@@ -5,22 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-<p>
-
-  <%= link_to 'Home', root_path %>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-   <% if current_user %>
-    Welcome, <%= current_user.name %>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
-  <% else %>
-    <%= link_to 'Log In', login_path %>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <%= link_to 'Sign Up', new_user_path %>
-  <% end %>
-</p>
+  <nav class="navbar">
+    <p>
+    <nav class="navbar">
+      <%= link_to 'Home', root_path %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+       <% if current_user %>
+        Welcome, <%= current_user.name %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+      <% else %>
+        <%= link_to 'Log In', login_path %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to 'Sign Up', new_user_path %>
+      <% end %>
+    </p>
+  </nav>
 <%= yield %>
 
 </body>
