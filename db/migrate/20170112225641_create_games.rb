@@ -6,7 +6,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :designer
       t.string :publisher
       t.integer :max_players
-
+      t.attachment :image
       t.timestamps null: false
     end
   end

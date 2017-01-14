@@ -8,9 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-  <nav class="navbar">
+  <header class="navbar navbar-inverse">
     <p>
-    <nav class="navbar">
       <%= link_to 'Home', root_path %>
       &nbsp;&nbsp;|&nbsp;&nbsp;
        <% if current_user %>
@@ -23,7 +22,7 @@
         <%= link_to 'Sign Up', new_user_path %>
       <% end %>
     </p>
-  </nav>
+  </header>
 <%= yield %>
 
 </body>
