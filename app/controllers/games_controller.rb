@@ -23,7 +23,7 @@ class GamesController < ApplicationController
 
   def update
     @game = game.find(game_params)
-    if @game.update_attributes(params.require(:game).permit(:name, :year, :designer, :publisher, :max_players, :image))
+    if @game.update_attributes(game_params)
       redirect_to game_path(@game)
     else
       render :edit
