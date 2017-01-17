@@ -1,10 +1,20 @@
+<header><%= link_to "+", new_game_path%></header>
 <h1>Games!</h1>
-<ul>
-  <% @games.each do |g| %>
-    <li><p><%= g.name%></p></li>
-    <%= image_tag g.image.url, class: "img-responsive col-md-1"%>
-    <%= link_to "More Info", game_path(g)%>
-  <% end %>
-</ul>
-
-<%= link_to "+", new_game_path%>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm-6 col-md-2">
+      <% @games.each do |g| %>
+        <div class="row">
+          <div class="caption">
+            <p><%= g.name%></p>
+          </div>
+          <div class="thumbnail">
+            <%= image_tag g.image.url%>
+          </div>
+          <%= link_to "More Info", game_path(g)%>
+          <br>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -21,21 +21,11 @@ class GamesController < ApplicationController
     end
   end
 
-  def update
-    @game = game.find(game_params)
-    if @game.update_attributes(game_params)
-      redirect_to game_path(@game)
-    else
-      render :edit
-    end
-  end
-
   def edit
   end
 
   def update
-    @game = Game.find(set_game)
-      if @game.update_attributes(game_params)
+    if @game.update_attributes(game_params)
       redirect_to root_path
     else
       render :edit
@@ -43,7 +33,6 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(set_game)
     @game.destroy
     redirect_to root_path
   end

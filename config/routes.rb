@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "games#index"
   resources :users, only: [:new, :create]
   resources :games
+  resources :plays
 
   resources :sessions, only: [:new, :create, :destroy]
   # Create a better looking URL for logging in

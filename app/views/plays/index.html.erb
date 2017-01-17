@@ -1,0 +1,7 @@
+<h1> Recent Plays </h1>
+<ul>
+  <% @plays.each do |f|%>
+    <li><p><%= f.name%></p></li>
+    <p><%= f.duration%></p>
+    <% end %>
+</ul>
