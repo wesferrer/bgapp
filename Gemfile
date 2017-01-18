@@ -52,3 +52,5 @@ group :development do
   gem 'bootstrap_form'  # if you want bootstrap forms!
 end
 
+gem 'rails_12factor', group: :production
+
