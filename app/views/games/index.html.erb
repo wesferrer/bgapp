@@ -1,20 +1,19 @@
 <header><%= link_to "+", new_game_path%></header>
-<h1>Games!</h1>
-<div class="jumbotron">
+<h1 class="text-center page-header">All Games</h1>
+
+<div class="container">
   <div class="row">
-    <div class="col-sm-6 col-md-2">
-      <% @games.each do |g| %>
-        <div class="row">
-          <div class="caption">
-            <p><%= g.name%></p>
-          </div>
-          <div class="thumbnail">
-            <%= image_tag g.image.url%>
-          </div>
-          <%= link_to "More Info", game_path(g)%>
-          <br>
+    <% @games.each do |game| %>
+      <div class="col-sm-2">
+        <div class="caption">
+          <p><%= game.name %></p>
         </div>
-      <% end %>
-    </div>
+        <div class="thumbnail">
+          <%= image_tag game.image.url %>
+        </div>
+        <%= link_to "More Info", game_path(game) %>
+        <br>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114004424) do
+ActiveRecord::Schema.define(version: 20170118002556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -30,11 +42,30 @@ ActiveRecord::Schema.define(version: 20170114004424) do
     t.datetime "updated_at",         null: false
   end
 
-  create_table "plays", force: :cascade do |t|
-    t.integer  "game_id"
-    t.integer  "user_id"
+  create_table "landings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "plays", force: :cascade do |t|
+    t.integer  "name"
+    t.date     "date"
+    t.string   "duration"
+    t.string   "location"
+    t.text     "comments"
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "score"
+    t.integer  "user_ids",   default: [],              array: true
   end
 
   add_index "plays", ["game_id"], name: "index_plays_on_game_id", using: :btree

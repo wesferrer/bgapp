@@ -1,0 +1,34 @@
+<h1><%= @play.game.name%> - New Play</h1>
+<%= form_for @play do |f|%>
+<br>
+<%= f.label :date%>
+<%= f.date_field :date %>
+<br>
+<%= f.label "Duration in hours" %>
+<%= f.select :duration, "1".."12"%>
+<br>
+<%= f.label :location%>
+<%= f.text_field :location%>
+
+
+<%= f.hidden_field :game_id, value: params[:game_id] %>
+
+<h3>Players</h3>
+<% @game.max_players.times do |player| %>
+  <% if player == 0 %>
+    <%= f.label 'New Players' %>
+    <%= f.text_field :user_ids, value: current_user.name %>
+
+    <%= f.label 'Score' %>
+    <%= f.text_field :score %><br>
+  <% else %>
+    <%= f.label 'New Players' %>
+    <%= f.text_field :user_ids %>
+
+    <%= f.label 'Score' %>
+    <%= f.text_field :score %><br>
+  <% end %>
+<% end %>
+<br>
+<%= f.submit "Submit"%>
+<% end%>

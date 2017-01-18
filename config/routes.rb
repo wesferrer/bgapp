@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
 
-  root "games#index"
-  resources :users, only: [:new, :create]
-  resources :games
+  root "landings#index"
+  resources :users, only: [:new, :create] do
+    resources :games
+    resources :locations
+  end
+  #resources :games
   resources :plays
+  post 'add_play' => 'plays#create'
+  resources :landings
+  resources :games
+  #todo: finish comments
+  #resources :comments
+  #resources :locations
 
   resources :sessions, only: [:new, :create, :destroy]
   # Create a better looking URL for logging in

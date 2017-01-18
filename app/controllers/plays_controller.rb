@@ -6,14 +6,18 @@ class PlaysController < ApplicationController
   end
 
   def new
-    @play = Play.new
+    @play = Play.new(game_id: params[:game_id])
+    @game = Game.find(params[:game_id])
   end
 
   def show
   end
 
   def create
-    @play = Play.new
+    p '&' * 100
+    p params
+    @play = Play.new(play_params)
+    @play.user_id = current_user.id
     if @play.save
       redirect_to play_path(@play)
     else
@@ -39,6 +43,7 @@ class PlaysController < ApplicationController
 
   private
   def play_params
+    params.require(:play).permit(:game_id, :user_id, :location, :date, :duration, :score, {user_ids: []})
   end
 
   def set_play
