@@ -48,9 +48,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'bootstrap-sass', '~> 3.2.0'
-  gem 'bootstrap_form'  # if you want bootstrap forms!
+   # if you want bootstrap forms!
 end
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap_form'
 
 gem 'rails_12factor', group: :production
 
