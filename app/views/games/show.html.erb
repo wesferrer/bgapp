@@ -6,20 +6,22 @@
     </div>
 
     <div class="col-md-4">
-      <p><h2>Info</h2></p>
-      <p><h3>Year</h3></p>
-      <p> <%= @game.year %> </p>
-      <p><h3> Designer</h3> </p>
-      <p><%= @game.designer %> </p>
-      <p><h3> Publisher </h3></p>
-      <p><%= @game.publisher %></p>
-      <p><h3> Max. Players </h3></p>
-      <p> <%= @game.max_players %> </p>
+      <p><h2 class= "panel panel-header">Info</h2></p>
+      <div class="panel panel-footer">
+        <p><h3>Year</h3></p>
+        <p> <%= @game.year %> </p>
+        <p><h3> Designer</h3> </p>
+        <p><%= @game.designer %> </p>
+        <p><h3> Publisher </h3></p>
+        <p><%= @game.publisher %></p>
+        <p><h3> Max. Players </h3></p>
+        <p> <%= @game.max_players %> </p>
+      </div>
     </div>
 
     <div class="col-md-4">
-      <p><h2>Previous Plays</h2></p>
-      <ul>
+      <p><h2 class="panel panel-header">Previous Plays</h2></p>
+      <ul class="panel panel-footer">
         <% @plays.each do |play| %>
           <li><%= link_to play.date, play_path(play) %></li>
         <% end%>
@@ -27,7 +29,7 @@
     </div>
   </div>
 </div>
-<footer>
+<footer class="text-center" id="games-footer">
 <%= link_to "New Play", new_play_path(game_id: @game.id), class: "btn btn-success" %>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <%= link_to "Back", games_path%>

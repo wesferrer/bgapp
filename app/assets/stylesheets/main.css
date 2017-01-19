@@ -131,7 +131,7 @@ aside {
   }
   .navbar-default.affix {
     background-color: white;
-    border-color: rgba(255, 255, 255, 0.5));
+    border-color: rgba(255, 255, 255, 0.5);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
     color: #F05F40;
@@ -434,6 +434,12 @@ body {
 }
 #games-index{
   padding-top: 100px;
+}
+#allgames {
+  display: inline;
+}
+#games-footer{
+  margin-top: 20px;
 }
 
 #signuppage {
