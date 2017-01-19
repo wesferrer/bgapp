@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
+    # instead of login, could do root_path
     redirect_to login_path, alert: 'You must be logged in to use this feature' if current_user.nil?
   end
 end

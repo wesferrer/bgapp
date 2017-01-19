@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "games#index"
+  root "landings#index"
   # get '/plays/new', to: 'plays#new_new'
   # post '/plays', to: 'plays#create_new'
   resources :users, only: [:new, :create] do

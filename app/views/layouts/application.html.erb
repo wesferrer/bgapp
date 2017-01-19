@@ -3,24 +3,41 @@
 <head>
   <title>Bgapp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-  <div>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><%= link_to 'Home', root_path %></li>
-      <li role="presentation"><%= link_to 'Games', games_path%></li>
-      <% if current_user %>
-        <li role="presentation" class="pull-right"><%= link_to 'Log Out', session_path('dummy'), method: :delete %></li>
-      <% else %>
-        <li role="presentation" class="pull-right"><%= link_to 'Log In', login_path %></li>
-        <li role="presentation" class="pull-right"><%= link_to 'Sign Up', new_user_path %></li>
-      <% end %>
-    </ul>
-  </div>
-<%= yield %>
+  <nav id="mainNav" class="navbar navbar-default">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+              </button>
+              <%= link_to "BGM", root_path, class: "navbar-brand" %>
+          </div>
 
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <% if current_user %>
+                  <li>
+                    <%= link_to "Games", games_path%>
+                  </li>
+                  <li>
+                    <!--<#%= link_to "Profile", landing_path%>-->
+                    <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+                  </li>
+                <% else %>
+                  <li><%= link_to 'Login', login_path %></li>
+                  <li><%= link_to 'Sign Up', new_user_path %></li>
+                <% end %>
+              </ul>
+          </div>
+      </div>
+  </nav>
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>
