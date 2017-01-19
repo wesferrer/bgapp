@@ -17,7 +17,7 @@ class PlaysController < ApplicationController
     p '&' * 100
     p params
     @play = Play.new(play_params)
-    @play.user_id = current_user.id
+    # @play.user_id = current_user.id
     if @play.save
       redirect_to play_path(@play)
     else

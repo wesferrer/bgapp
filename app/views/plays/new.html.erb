@@ -1,34 +1,39 @@
-<h1><%= @play.game.name%> - New Play</h1>
-<%= form_for @play do |f|%>
-<br>
-<%= f.label :date%>
-<%= f.date_field :date %>
-<br>
-<%= f.label "Duration in hours" %>
-<%= f.select :duration, "1".."12"%>
-<br>
-<%= f.label :location%>
-<%= f.text_field :location%>
-
-
-<%= f.hidden_field :game_id, value: params[:game_id] %>
-
-<h3>Players</h3>
-<% @game.max_players.times do |player| %>
-  <% if player == 0 %>
-    <%= f.label 'New Players' %>
-    <%= f.text_field :user_ids, value: current_user.name %>
-
-    <%= f.label 'Score' %>
-    <%= f.text_field :score %><br>
-  <% else %>
-    <%= f.label 'New Players' %>
-    <%= f.text_field :user_ids %>
-
-    <%= f.label 'Score' %>
-    <%= f.text_field :score %><br>
-  <% end %>
-<% end %>
-<br>
-<%= f.submit "Submit"%>
-<% end%>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="text-center"><%= @play.game.name%> - New Play</h1>
+      <%= image_tag @play.game.image.url, class: 'img-responsive center-block', width: "200px", height: "200px" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-center">Add new play</h3>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for @play, html: {class: 'form-horizontal'} do |f|%>
+      <div class="form-group">
+      <%= f.label :date%>
+      <%= f.date_field :date, class: 'form-control' %>
+      </div >
+      <div class="form-group">
+      <%= f.label "Duration in hours" %>
+      <%= f.select :duration, "1".."12", class: 'form-control' %>
+      </div >
+      <div class="form-group">
+      <%= f.label :location%>
+      <%= f.text_field :location, class: 'form-control', placeholder: 'Home' %>
+      </div >
+      <div class="form-group">
+      <%= f.label :score, "My Score"%>
+      <%= f.number_field :score, class: 'form-control' %>
+      </div >
+      <div class="form-group">
+      <%= f.label :comments%>
+      <%= f.text_area :comments, class: 'form-control', placeholder: 'example: John: 23'%>
+      </div >
+      <%= f.hidden_field :game_id, value: params[:game_id] %>
+      <%= f.submit "Submit", class: "btn btn-primary"%>
+      <% end%>
+    </div>
+  </div>
+</div>

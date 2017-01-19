@@ -1,20 +1,38 @@
-<div class="page-header">
-  <h1><%= @game.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h1><%= @game.name %></h1>
+      <%= image_tag @game.image.url, class: "col-md-12"%>
+    </div>
+
+    <div class="col-md-4">
+      <p><h2>Info</h2></p>
+      <p><h3>Year</h3></p>
+      <p> <%= @game.year %> </p>
+      <p><h3> Designer</h3> </p>
+      <p><%= @game.designer %> </p>
+      <p><h3> Publisher </h3></p>
+      <p><%= @game.publisher %></p>
+      <p><h3> Max. Players </h3></p>
+      <p> <%= @game.max_players %> </p>
+    </div>
+
+    <div class="col-md-4">
+      <p><h2>Previous Plays</h2></p>
+      <ul>
+        <% @plays.each do |play| %>
+          <li><%= link_to play.date, play_path(play) %></li>
+        <% end%>
+      </ul>
+    </div>
+  </div>
 </div>
-
-<%= image_tag @game.image.url, class: "img-responsive col-md-3"%>
-<p><h2>Year</h2></p>
-<p> <%= @game.year %> </p>
-<p><h2> Designer</h2> </p>
-<p><%= @game.designer %> </p>
-<p><h2> Publisher </h2></p>
-<p><%= @game.publisher %></p>
-<p><h2> Max. Players </h2></p>
-<p> <%= @game.max_players %> </p>
-
-
+<footer>
+<%= link_to "New Play", new_play_path(game_id: @game.id), class: "btn btn-success" %>
+&nbsp;&nbsp;|&nbsp;&nbsp;
 <%= link_to "Back", games_path%>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <%= link_to "Edit", edit_game_path %>
-&nbsp;&nbsp;|&nbsp;&nbsp
-<%= link_to "New Play", new_play_path(game_id: @game.id) %>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<%= link_to "Delete this game", game_path(@game), method: :delete, data: { confirm: "Delete this game?"}, class: "btn btn-danger"%>
+</footer>

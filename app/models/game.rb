@@ -3,5 +3,6 @@ class Game < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :users
-  has_many :plays, through: :users
+  has_many :plays
+  has_many :players, through: :plays, source: :user
 end

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-  root "landings#index"
+  root "games#index"
+  # get '/plays/new', to: 'plays#new_new'
+  # post '/plays', to: 'plays#create_new'
   resources :users, only: [:new, :create] do
     resources :games
     resources :locations
   end
+
+
   #resources :games
   resources :plays
   post 'add_play' => 'plays#create'

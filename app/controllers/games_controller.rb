@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @play = Play.new(game_id: params[:game_id])
   end
 
   def new
@@ -10,6 +11,9 @@ class GamesController < ApplicationController
   end
 
   def show
+    @plays = @game.plays
+    p "*" * 50
+    p @plays
   end
 
   def create
