@@ -1,5 +1,6 @@
 class PlaysController < ApplicationController
   before_action :set_play, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
 
   def index
     @plays = Play.all
@@ -11,11 +12,10 @@ class PlaysController < ApplicationController
   end
 
   def show
+    @game = Game.find(@play.game_id)
   end
 
   def create
-    p '&' * 100
-    p params
     @play = Play.new(play_params)
     # @play.user_id = current_user.id
     if @play.save
@@ -26,10 +26,15 @@ class PlaysController < ApplicationController
   end
 
   def edit
+    if @play.user_id == current_user
+      set_play
+    else
+      redirect_to play_path
+    end
   end
 
   def update
-    if @play.update_attributes(play_params)
+    if @play.user_id == current_user && @play.update_attributes(play_params)
       redirect_to play_path(@play)
     else
       render :edit
@@ -38,12 +43,12 @@ class PlaysController < ApplicationController
 
   def destroy
     @play.destroy
-    redirect_to games_path
+    redirect_to root_path
   end
 
   private
   def play_params
-    params.require(:play).permit(:game_id, :user_id, :location, :date, :duration, :score, {user_ids: []})
+    params.require(:play).permit(:game_id, :user_id, :location, :comments,  :date, :duration, :score)
   end
 
   def set_play

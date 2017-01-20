@@ -32,7 +32,7 @@ class GamesController < ApplicationController
 
   def update
     if @game.update_attributes(game_params)
-      redirect_to root_path
+      redirect_to game_path(@game)
     else
       render :edit
     end

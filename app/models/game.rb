@@ -5,4 +5,5 @@ class Game < ActiveRecord::Base
   has_many :users
   has_many :plays
   has_many :players, through: :plays, source: :user
+  validates :image,  presence: true
 end

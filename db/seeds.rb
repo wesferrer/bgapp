@@ -13,7 +13,7 @@ users = User.create([
   { name: 'James', email: 'james@gmail.com', password: 'password', password_confirmation: 'password'}
   ])
 games = Game.create([
-  { name: 'Mansions of Madness Second Edition', year: 2016, designer: 'Nikki Valens', publisher: "Fantasy Flight Games", max_players: 5}
+  { name: 'Suburbia', image: File.new("#{Rails.root}/app/assets/images/pic1418335_md.jpg") year: 2012, designer: 'Ted Alspach', publisher: "Bezier Games", max_players: 5}
   ])
 plays = Play.create([
   { game_id: Game.first.id, user_id: User.first.id, date: Date.new(2017, 01, 17) , location: 'home', comments: 'GG!', duration: 1, score: 25},

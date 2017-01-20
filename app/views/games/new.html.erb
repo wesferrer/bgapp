@@ -2,7 +2,7 @@
     <h1>Add a new game</h1>
 </div>
 <div class="text-center container">
-    <%= form_for @game, class: "form-horizontal", html: { multipart: true } do |f| %>
+    <%= form_for @play, class: "form-horizontal", html: { multipart: true } do |f| %>
 
         <div class="form-group">
             <%= f.label :name %>
@@ -32,7 +32,7 @@
             <%= f.label :max_players %>
             <%= f.text_field :max_players %>
         </div>
-
+        <% f.hidden_field :user_id, :value => current_user%>
         <%= f.submit "Add new game" %>
         <br>
         <%= link_to "Back to the list!", games_path %>
