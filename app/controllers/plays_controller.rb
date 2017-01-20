@@ -16,8 +16,7 @@ class PlaysController < ApplicationController
   end
 
   def create
-    @play = Play.new(play_params)
-    # @play.user_id = current_user.id
+    @play = current_user.plays.create(play_params)
     if @play.save
       redirect_to play_path(@play)
     else
@@ -26,11 +25,7 @@ class PlaysController < ApplicationController
   end
 
   def edit
-    if @play.user_id == current_user
-      set_play
-    else
-      redirect_to play_path
-    end
+    redirect_to play_path if current_user != @play.user
   end
 
   def update
@@ -43,7 +38,7 @@ class PlaysController < ApplicationController
 
   def destroy
     @play.destroy
-    redirect_to root_path
+    redirect_to games_path
   end
 
   private
