@@ -1,24 +1,28 @@
 <header>
-    <div class="header-content">
+    <div class="header-content text-center">
         <div class="header-content-inner">
             <h1 id="homeHeading">Board Game Manager</h1>
             <hr>
             <p>Log plays and keep track of your collection in this awesome record keeping app!</p>
         </div>
         <div class="container text-center">
-            <%= form_tag sessions_path do %>
-              <div class="field email" id="email">
-                <%= text_field_tag :email, params[:email], placeholder: 'email' %>
-              </div>
-              <div class="field password" id="password">
-                <%= password_field_tag :password, '', placeholder: 'password' %>
-              </div>
-              <div id="login">
-                <%= submit_tag "Log In", class: 'btn btn-primary btn-xl' %>
-              </div>
-            <% end %>
-            <div id="signup">
-            <%= link_to 'Sign up', new_user_path, class: 'btn btn-primary btn-xl' %>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <%= form_tag sessions_path, class: "form-horizontal" do %>
+                      <div class="field email form-group" id="email">
+                        <%= text_field_tag :email, params[:email], placeholder: 'email', class: 'form-control', style: 'width: 50%; margin: 0 auto;' %>
+                      </div>
+                      <div class="field password form-group" id="password">
+                        <%= password_field_tag :password, '', placeholder: 'password', class: "form-control", style: 'width: 50%; margin: 0 auto;' %>
+                      </div>
+                      <div id="login">
+                        <%= submit_tag "Log In", class: 'btn btn-primary btn-xl' %>
+                      </div>
+                    <% end %>
+                    <div id="signup">
+                    <%= link_to 'Sign up', new_user_path, class: 'btn btn-primary btn-xl' %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

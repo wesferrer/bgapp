@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container panel panel-defaulttext-center">
   <div class="row">
     <div class="col-md-4 text-center">
       <h1><%= @game.name %></h1>
@@ -32,9 +32,10 @@
 <footer class="text-center" id="games-footer">
 <%= link_to "New Play", new_play_path(game_id: @game.id), class: "btn btn-success" %>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<%= link_to "Back", games_path%>
+<%= link_to "Back", games_path, class: "btn btn-default"%>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<%= link_to "Edit", edit_game_path %>
+<%= link_to "Edit", edit_game_path, class: "btn btn-default" %>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <%= link_to "Delete this game", game_path(@game), method: :delete, data: { confirm: "Delete this game?"}, class: "btn btn-danger"%>
 </footer>
+</body>
