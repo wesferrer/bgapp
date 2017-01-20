@@ -37,8 +37,11 @@ class PlaysController < ApplicationController
   end
 
   def destroy
-    @play.destroy
-    redirect_to games_path
+    if current_user == @play.user
+      @play.destroy
+    else
+      redirect_to play_path
+    end
   end
 
   private
